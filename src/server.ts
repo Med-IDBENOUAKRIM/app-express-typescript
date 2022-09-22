@@ -7,6 +7,7 @@ import bodyParser from 'body-parser';
 import { PORT, URI } from './utils/envirenoment';
 import connectToDb from './utils/connectDB';
 import userRouter from './routes/authRoutes';
+import postRouter from './routes/postRouter';
 
 const app = express();
 
@@ -27,5 +28,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 connectToDb(URI!);
 
 app.use('/api/v1/auth', userRouter);
+app.use('/api/v1/post', postRouter);
 
 app.listen(PORT, () => console.log(`The server is running on port ${PORT}`));
